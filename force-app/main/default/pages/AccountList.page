@@ -1,0 +1,20 @@
+<apex:page standardController="Account" recordSetVar="accounts">
+    <apex:form >
+        <apex:pageBlock title="Accounts List" id="accounts_list">
+            Filter:
+            <apex:selectList value="{! filterId }" size="1">
+                <apex:selectOptions value="{! listViewOptions }"/>
+                <apex:actionSupport event="onchange" reRender="accounts_list"/>
+            </apex:selectList>
+            
+            <apex:repeat value="{! accounts }" var="a">
+                <li>
+                    <apex:outputText value="{! a.Name }"/>
+                    <apex:outputLink value="/{!a.id}">
+                        Detail
+                </apex:outputLink>
+                </li>
+            </apex:repeat>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
